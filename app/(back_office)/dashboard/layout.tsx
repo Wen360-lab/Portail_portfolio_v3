@@ -14,7 +14,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
            <body className="bg-background">
             <div className="flex h-screen">
                 {/* La Sidebar */}
-                <aside className="w-64 bg-primary text-white p-4">
+                <aside className="hidden md:flex flex-col w-64 bg-primary text-white p-4">
                     <div className="flex flex-col h-full justify-between">
                     
                         {/* Haut : Logo + Navigation */}
@@ -59,7 +59,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
                 {/* Le Contenu principal */}
                 <div className="flex flex-col flex-1">
                     {/* Le Header */}
-                    <header className="h-16 flex items-center ml-6">
+                    <header className="h-16 flex items-center px-3 md:px-6 gap-4">
                         {/* La Barre de recherche */}
                         <div className="flex items-center gap-4 w-full px-6 justify-between">
                             <input 
@@ -73,7 +73,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
                         <div className="flex gap-4 justify-center items-center mr-12">
                             {/* photo de prodil */}
                             <div className="w-10 h-10 rounded-full flex justify-center items-center text-white bg-primary"></div>
-                            <div className="flex-col gap-0.5">
+                            <div className="hidden md:flex flex-col gap-0.5">
                                 <p className="text-base font-medium">Adimistrateur</p>
                                 <p className="text-sm">Admin@gmail.com</p>
                             </div>
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
                     </header>
 
                     {/*La Page principale elle-même (tableau de profils) */}
-                    <main className="flex-1 p-6 overflow-y-auto">
+                    <main className="flex-1 p-3 md:p-6 overflow-y-auto overflow-x-hidden">
                         {children}
                     </main>
                 </div>

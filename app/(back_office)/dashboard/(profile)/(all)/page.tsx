@@ -67,11 +67,11 @@ export default function Dashboard() {
           <tr className="border-b text-left font-sora ">
             <th className="p-4 text-[10] max-w-xs truncate">Profil</th>
             <th className="p-4 text-[10] max-w-xs truncate">Nom</th>
-            <th className="p-4 text-[10] max-w-xs truncate">Prénom</th>
-            <th className="p-4 text-[10] max-w-xs truncate">Spécialité</th>
-            <th className="p-4 text-[10] max-w-xs truncate">Description</th>
-            <th className="p-4 text-[10] max-w-xs truncate">Lien portfolio</th>
-            <th className="p-4 text-[10]">Action</th>
+            <th className="p-4 text-[10] max-w-xs truncate hidden md:table-cell">Prénom</th>
+            <th className="p-4 text-[10] max-w-xs truncate hidden md:table-cell">Spécialité</th>
+            <th className="p-4 text-[10] max-w-xs truncate hidden md:table-cell">Description</th>
+            <th className="p-4 text-[10] max-w-xs truncate hidden md:table-cell">Lien portfolio</th>
+            <th className="p-4 text-[10] max-w-xs truncate">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -81,10 +81,10 @@ export default function Dashboard() {
                 <div className="w-8 h-8 rounded-full flex justify-center items-center text-white bg-primary font-sora">{profil.id}</div>
               </td>
               <td className="p-4 font-sora text-sm max-w-xs truncate">{profil.nom}</td>
-              <td className="p-4 font-sora text-sm max-w-xs truncate">{profil.prenom}</td>
-              <td className="p-4 font-sora text-sm max-w-xs truncate">{profil.specialite}</td>
-              <td className="p-4 font-sora text-sm max-w-xs truncate">{profil.description}</td>
-              <td className="p-4 font-sora text-sm max-w-xs truncate">{profil.lienPortfolio}</td>
+              <td className="p-4 font-sora text-sm max-w-xs truncate hidden md:table-cell">{profil.prenom}</td>
+              <td className="p-4 font-sora text-sm max-w-xs truncate hidden md:table-cell">{profil.specialite}</td>
+              <td className="p-4 font-sora text-sm max-w-xs truncate hidden md:table-cell">{profil.description}</td>
+              <td className="p-4 font-sora text-sm max-w-xs truncate hidden md:table-cell">{profil.lienPortfolio}</td>
               <td className="p-4 relative">
                 <button className="font-sora cursor-pointer" onClick={() => setMenuOuvert(menuOuvert === profil.id ? null : profil.id)}>...</button>
 
