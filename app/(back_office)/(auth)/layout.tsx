@@ -1,18 +1,7 @@
-import type { Metadata } from "next";
-
-
-
-export const metadata: Metadata = {
-  title: "Portail Portfolios | login",
-};
-
-export default function RootLayout({ children }: Readonly<{children: React.ReactNode; }>) 
-{
-    return (
-        <html lang="fr" >
-            <body >
-                {children}
-            </body>
-        </html>
-    );
+export default function BackOfficeLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="min-h-screen bg-gray-100">
+      {children}
+    </div>
+  );
 }
