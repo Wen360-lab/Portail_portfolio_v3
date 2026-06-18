@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { FaArrowRightLong } from "react-icons/fa6";
 import "@/style/frontOfficeStyle/pages/home/_hero.scss";
 
 export default function HomePage(){
@@ -13,7 +13,7 @@ export default function HomePage(){
                         <div className="flex">
                             <h1 className="hero-title">Bienvenue sur le portail des<br/>portfolios des développeurs<br/>de l'École 241</h1>
                             <p className="hero-subtitle">Cette plateforme regroupe l'ensemble des développeurs de la<br/>promotion 14 de l'École 241. Chaque profil possède des<br/>aptitudes et compétences diverses.</p>
-                            <Link href="" className="btn-explore">Explorez les portfolios <i className="fa-solid fa-arrow-right-long"></i></Link>
+                            <Link href="" className="btn-explore">Explorez les portfolios <FaArrowRightLong /></Link>
                         </div>
                     </div>               
                 </div>          
