@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-
+import "@/style/frontOfficeStyle/base/_reset.scss";
 
 export const metadata: Metadata = {
   title: "Portail Portfolios",
