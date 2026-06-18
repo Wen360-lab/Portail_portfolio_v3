@@ -12,7 +12,7 @@ export default function UpdateAdmin()
            {/* La ligne séparatrice  */}
             <hr />
             {/* Le conteneur des sections formulaire et Photo de profil */}
-            <div className="flex justify-between items-start mt-12">
+            <div className="md:flex lg:flex sm:flex justify-between  mt-12">
                 {/* La section Formulaire */}
                 <div className="flex-col rounded-lg border p-5">
 
@@ -31,7 +31,7 @@ export default function UpdateAdmin()
                         placeholder="monbojeanives@gmail.com"
                         className="w-full border-[1.5] border-gray-500 rounded-lg px-4 py-3 mb-4 outline-none focus:border-primary"
                     />
-
+                    {/* La div contenant les champs mot de passe  */}
                     <div className="flex mt-2.5 gap-3.5">
                         <div className="flex-col">
                             {/* Champ mot de passe (ancient)*/}
