@@ -12,7 +12,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
 {
     return (
         <html lang="fr" >
-           <body className="bg-gray-100 font-poppins font-medium">
+           <body className="font-poppins font-medium">
                 <SidebarDashboard children={children} />
             </body>
         </html>

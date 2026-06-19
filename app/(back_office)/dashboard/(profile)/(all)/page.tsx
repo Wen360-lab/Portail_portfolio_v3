@@ -1,6 +1,8 @@
 "use client"
 import Link from "next/link"
 import { useState } from "react"
+import Btn from "@/src/components/layouts/Btn"
+import { FaPlus } from "react-icons/fa6";
 
 const profils = [
   {
@@ -56,8 +58,7 @@ const profils = [
 
 ]
 
-function ThHeadTable({label}: {label: string})
-{
+function ThHeadTable({label}: {label: string}){
     return (
         <th className="p-2 text-sm text-gray-900 py-5">{label}</th>
     )
@@ -73,8 +74,8 @@ type TypeProfile ={
         lienPortfolio: string
     }
 }
-function ProfileTr({profil}: {profil: TypeProfile})
-{
+
+function ProfileTr({profil}: {profil: TypeProfile}){
     const [menuOuvert, setMenuOuvert] = useState<number | null>(null)
 
 
@@ -118,20 +119,30 @@ function ProfileTr({profil}: {profil: TypeProfile})
 export default function Dashboard() {
 
     return (
-        <section className="border-3">
-            <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl md:text-3xl  font-bold">Profils</h1>
-                <div className="flex gap-4">
-                    <div className="flex items-center gap-2">
-                        <h3 className="text-xl font-semibold">Total</h3>
-                        <div className="bg-primary text-white px-4 py-2 rounded-lg ">12</div>
+        <section>
+            <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
+                <h1 className="text-2xl md:text-2xl  font-bold">Profils</h1>
+
+                <div className="flex flex-wrap gap-4">
+
+                    <div className="flex items-center gap-4">
+                        <h3 className="text-lg font-semibold">Total</h3>
+                        <div className="bg-primary text-white text-sm font-semibold px-4 py-3 rounded-lg ">12</div>
                     </div>
 
-                    <Link href="/dashboard/create" className="bg-primary text-white px-4 py-2 rounded-lg cursor-pointer">Ajouter un profil +</Link>
+
+
+                    <Link
+                        href="/dashboard/create"
+                        className="bg-primary text-white px-4 py-3 rounded-lg cursor-pointer flex items-center gap-2 text-sm font-semibold"
+                        >
+                          Ajouter un profile <FaPlus />
+                    </Link>
+
                 </div>
             </div>
 
-            <table className="w-full bg-white rounded-lg shadow table-fixed">
+            <table className="w-full bg-white rounded-lg shadow table-fixed mb-4">
                 <thead>
                     <tr className="border-b border-gray-300 text-left">
                         <ThHeadTable label="N" />

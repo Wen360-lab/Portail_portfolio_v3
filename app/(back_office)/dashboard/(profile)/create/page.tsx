@@ -1,6 +1,24 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { IoIosArrowForward } from "react-icons/io";
+import { AiOutlineUser } from "react-icons/ai";
+import Link from "next/link"
+
+function Input({label, type, placeholder}: {label: string, type?:string, placeholder?: string}){
+
+
+    return(<div>
+        <label className="block text-sm font-semibold text-gray-700 mb-2">{label}</label>
+
+        <input
+            type={type ? type : "text"}
+            placeholder={placeholder && placeholder}
+            className="w-full block py-3 px-2 rounded-lg border border-gray-300 text-sm outline-none"
+        />
+        
+    </div>)
+}
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 interface FormData {
@@ -40,15 +58,6 @@ const SPECIALTIES = [
   "Data Scientist",
 ];
 
-// ─── Icons (inline SVG) ──────────────────────────────────────────────────────
-function UserIcon({ className = "w-5 h-5" }: { className?: string }) {
-  return (
-    <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 12a4 4 0 100-8 4 4 0 000 8z" />
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 20a7 7 0 0114 0" />
-    </svg>
-  );
-}
 
 function BriefcaseIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -232,394 +241,166 @@ export default function CreateProfilePage() {
   // ─── Render ────────────────────────────────────────────────────────────────
   return (
     <div className="py-6 sm:py-8">
-      {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-2">
-        <span>Dashboard</span>
-        <span className="mx-2">›</span>
-        <span className="text-blue-700 font-semibold">Nouveau profil</span>
-      </nav>
+        {/* Breadcrumb */}
+        <nav className="flex items-center gap-1 text-sm mb-6"> <Link href="/dashboard" className="font-semibold  text-primary">Dashboard</Link> <IoIosArrowForward /><span className="text-gray-700 ">Nouveau profil</span>
+        </nav>
 
-      {/* Title */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-[#1e293b] mb-6 sm:mb-8">
-        Ajouter un nouveau profil
-      </h1>
+        {/* Title */}
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-700 mb-6 sm:mb-8">
+            Ajouter un nouveau portfolio
+        </h1>
 
-      {/* Success message */}
-      {submitSuccess && (
-        <div className="mb-6 bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-3 text-sm font-medium">
-          ✅ Profil enregistré avec succès !
-        </div>
-      )}
-
-      <form onSubmit={handleSubmit}>
-        {/* ═══════════════════════════════════════════════════════════════
-            DESKTOP LAYOUT: 2 columns
-        ═══════════════════════════════════════════════════════════════ */}
-        <div className="hidden lg:grid lg:grid-cols-3 gap-6">
-          {/* ── Card: Infos (2/3) ── */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-            <div className="mb-6">
-              <div className="w-9 h-9 bg-[#e8edf6] rounded-lg flex items-center justify-center text-[#0057ff] mb-4">
-                <UserIcon className="w-[18px] h-[18px]" />
-              </div>
+        {/* Success message */}
+        {submitSuccess && (
+            <div className="mb-6 bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-3 text-sm font-medium">
+            ✅ Profil enregistré avec succès !
             </div>
+        )}
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {/* Nom Complet */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Nom Complet
-                </label>
-                <input
-                  type="text"
-                  placeholder="ex: Jean Valjean"
-                  value={formData.fullName}
-                  onChange={(e) => handleChange("fullName", e.target.value)}
-                  className={inputClassName(!!errors.fullName)}
-                />
-                {errors.fullName && (
-                  <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
-                )}
-              </div>
+        <form onSubmit={handleSubmit}>
+            
+            <div className="flex flex-col lg:flex-row justify-between gap-2">
 
-              {/* Lien Portfolio */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Lien Portfolio
-                </label>
-                <input
-                  type="text"
-                  placeholder="ex: fjjgk./LPjjdj"
-                  value={formData.portfolioLink}
-                  onChange={(e) => handleChange("portfolioLink", e.target.value)}
-                  className={inputClassName(false)}
-                />
-              </div>
+                <div className=" bg-white rounded-2xl shadow-sm p-5 flex-1/2">
+                    <div className="mb-6">
+                        <div className="w-9 h-9 bg-[#e8edf6] rounded-lg flex items-center justify-center text-primary mb-4">
+                        <AiOutlineUser />
+                        </div>
+                    </div>
 
-              {/* Adresse Email */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Adresse Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="jean.v@entreprise.com"
-                  value={formData.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  className={inputClassName(!!errors.email)}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                )}
-              </div>
+                    <div className="flex flex-col gap-10">
+                        <Input label="Nom et prenom" placeholder="ex: Kombila jean Erick" />
+                        <Input label="Email" type="email" placeholder="ex: example@my.email" />
+                        <Input label="Lien portfolio" placeholder="ex: http://www.github.io" />
+                        <Input label="Numero de telephone" placeholder="ex: +241 074 99 83 16" />
+                    </div>
+                </div>
 
-              {/* Numéro de Téléphone */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Numéro de Téléphone
-                </label>
-                <input
-                  type="tel"
-                  placeholder="+33 6 00 00 00 00"
-                  value={formData.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                  className={inputClassName(!!errors.phone)}
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                )}
-              </div>
-            </div>
-          </div>
+                {/* ── Card: Photo de Profil (1/3) ── */}
+                <div className="flex-1/2 bg-white rounded-2xl shadow-sm p-6 sm:p-8 flex flex-col items-center h-fit">
+                    <h3 className="text-sm font-semibold text-[#1e293b] mb-4">Photo de Profil</h3>
 
-          {/* ── Card: Photo de Profil (1/3) ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8 flex flex-col items-center">
-            <h3 className="text-sm font-semibold text-[#1e293b] mb-4">Photo de Profil</h3>
+                    <div className="relative mb-3">
+                    <div
+                        className={`w-28 h-28 rounded-full border-2 border-dashed flex items-center justify-center cursor-pointer transition ${
+                        photoPreviewUrl
+                            ? "border-[#1e3a6e]/30 bg-[#e8edf6]"
+                            : "border-gray-300 bg-[#eef1f9]"
+                        }`}
+                        onClick={() => fileInputRef.current?.click()}
+                    >
+                        {photoPreviewUrl ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                            src={photoPreviewUrl}
+                            alt="Aperçu"
+                            className="w-full h-full rounded-full object-cover"
+                        />
+                        ) : (
+                        <CameraIcon className="w-9 h-9 text-gray-400" />
+                        )}
+                    </div>
 
-            <div className="relative mb-3">
-              <div
-                className={`w-28 h-28 rounded-full border-2 border-dashed flex items-center justify-center cursor-pointer transition ${
-                  photoPreviewUrl
-                    ? "border-[#1e3a6e]/30 bg-[#e8edf6]"
-                    : "border-gray-300 bg-[#eef1f9]"
-                }`}
-                onClick={() => fileInputRef.current?.click()}
-              >
-                {photoPreviewUrl ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={photoPreviewUrl}
-                    alt="Aperçu"
-                    className="w-full h-full rounded-full object-cover"
-                  />
-                ) : (
-                  <CameraIcon className="w-9 h-9 text-gray-400" />
-                )}
-              </div>
+                    {/* Edit button */}
+                    <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="absolute -bottom-1 -right-1 w-8 h-8 bg-[#1e3a6e] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2a4f8f] transition"
+                    >
+                        <PencilIcon className="w-3.5 h-3.5" />
+                    </button>
+                    </div>
 
-              {/* Edit button */}
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="absolute -bottom-1 -right-1 w-8 h-8 bg-[#1e3a6e] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2a4f8f] transition"
-              >
-                <PencilIcon className="w-3.5 h-3.5" />
-              </button>
-            </div>
-
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/jpg,image/png"
-              onChange={handlePhotoChange}
-              className="hidden"
-            />
-
-            {photoError && (
-              <p className="text-red-500 text-xs text-center mt-2">{photoError}</p>
-            )}
-
-            <p className="text-xs text-gray-500 text-center mt-2 leading-relaxed">
-              Formats acceptés: JPG, PNG.
-              <br />
-              Taille max 5MB.
-            </p>
-          </div>
-        </div>
-
-        {/* ═══════════════════════════════════════════════════════════════
-            MOBILE LAYOUT: stacked
-        ═══════════════════════════════════════════════════════════════ */}
-        <div className="lg:hidden space-y-6">
-          {/* ── Card: Photo + Infos ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
-            {/* Photo centered */}
-            <div className="flex justify-center mb-5">
-              <div className="relative">
-                <div
-                  className={`w-28 h-28 rounded-full border-2 border-dashed flex items-center justify-center cursor-pointer transition ${
-                    photoPreviewUrl
-                      ? "border-[#1e3a6e]/30 bg-[#e8edf6]"
-                      : "border-gray-300 bg-[#eef1f9]"
-                  }`}
-                  onClick={() => fileInputRef.current?.click()}
-                >
-                  {photoPreviewUrl ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={photoPreviewUrl}
-                      alt="Aperçu"
-                      className="w-full h-full rounded-full object-cover"
+                    <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/jpeg,image/jpg,image/png"
+                    onChange={handlePhotoChange}
+                    className="hidden"
                     />
-                  ) : (
-                    <CameraIcon className="w-9 h-9 text-gray-400" />
-                  )}
+
+                    {photoError && (
+                    <p className="text-red-500 text-xs text-center mt-2">{photoError}</p>
+                    )}
+
+                    <p className="text-xs text-gray-500 text-center mt-2 leading-relaxed">
+                    Formats acceptés: JPG, PNG.
+                    <br />
+                    Taille max 5MB.
+                    </p>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => fileInputRef.current?.click()}
-                  className="absolute -bottom-1 -right-1 w-8 h-8 bg-[#1e3a6e] rounded-full flex items-center justify-center text-white shadow-lg"
-                >
-                  <PencilIcon className="w-3.5 h-3.5" />
-                </button>
-              </div>
             </div>
 
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/jpeg,image/jpg,image/png"
-              onChange={handlePhotoChange}
-              className="hidden"
-            />
+        
 
-            {photoError && (
-              <p className="text-red-500 text-xs text-center mb-4">{photoError}</p>
+            {/* ═══════════════════════════════════════════════════════════════
+                DESKTOP: Spécialité card (full width, below the 2-col grid)
+            ═══════════════════════════════════════════════════════════════ */}
+            <div className="hidden lg:block mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-6">
+                <div className="w-11 h-11 bg-[#e8edf6] rounded-xl flex items-center justify-center text-[#1e3a6e]">
+                <BriefcaseIcon className="w-6 h-6" />
+                </div>
+                <h3 className="text-lg font-bold text-[#1e293b]">Spécialité</h3>
+            </div>
+
+            <div className="relative max-w-xl">
+                <select
+                value={formData.specialty}
+                onChange={(e) => handleChange("specialty", e.target.value)}
+                className={`${inputClassName(
+                    !!errors.specialty
+                )} appearance-none pr-10 ${
+                    !formData.specialty ? "text-gray-400" : "text-[#1e293b]"
+                }`}
+                >
+                <option value="" disabled>
+                    Sélectionnez une spécialité
+                </option>
+                {SPECIALTIES.map((s) => (
+                    <option key={s} value={s}>
+                    {s}
+                    </option>
+                ))}
+                </select>
+                <ChevronDownIcon className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+            {errors.specialty && (
+                <p className="text-red-500 text-xs mt-1">{errors.specialty}</p>
             )}
 
-            {/* Form fields stacked */}
-            <div className="space-y-4">
-              {/* Nom Complet */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Nom Complet
-                </label>
-                <input
-                  type="text"
-                  placeholder="ex: Jean Valjean"
-                  value={formData.fullName}
-                  onChange={(e) => handleChange("fullName", e.target.value)}
-                  className={inputClassName(!!errors.fullName)}
-                />
-                {errors.fullName && (
-                  <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>
-                )}
-              </div>
+            {/* Divider */}
+            <div className="border-t border-gray-100 my-6" />
 
-              {/* Adresse Email */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Adresse Email
-                </label>
-                <input
-                  type="email"
-                  placeholder="jean.v@entreprise.com"
-                  value={formData.email}
-                  onChange={(e) => handleChange("email", e.target.value)}
-                  className={inputClassName(!!errors.email)}
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-                )}
-              </div>
-
-              {/* Lien Portfolio */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Lien Portfolio
-                </label>
-                <input
-                  type="text"
-                  placeholder="ex: fjjgk./LPjjdj"
-                  value={formData.portfolioLink}
-                  onChange={(e) => handleChange("portfolioLink", e.target.value)}
-                  className={inputClassName(false)}
-                />
-              </div>
-
-              {/* Numéro de Téléphone */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Numéro de Téléphone
-                </label>
-                <input
-                  type="tel"
-                  placeholder="+33 6 00 00 00 00"
-                  value={formData.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                  className={inputClassName(!!errors.phone)}
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
-                )}
-              </div>
+            {/* Toggle */}
+            <Toggle
+                checked={formData.activateAccess}
+                onChange={(val) => handleChange("activateAccess", val)}
+                label="Activer l'accès au portail dès la création"
+            />
             </div>
-          </div>
 
-          {/* ── Card: Spécialité + Toggle ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 sm:p-6">
-            <div className="space-y-5">
-              {/* Spécialité */}
-              <div>
-                <label className="block text-sm font-semibold text-[#1e293b] mb-2">
-                  Spécialité
-                </label>
-                <div className="relative">
-                  <select
-                    value={formData.specialty}
-                    onChange={(e) => handleChange("specialty", e.target.value)}
-                    className={`${inputClassName(
-                      !!errors.specialty
-                    )} appearance-none pr-10 ${
-                      !formData.specialty ? "text-gray-400" : "text-[#1e293b]"
-                    }`}
-                  >
-                    <option value="" disabled>
-                      Sélectionnez une spécialité
-                    </option>
-                    {SPECIALTIES.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronDownIcon className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-                </div>
-                {errors.specialty && (
-                  <p className="text-red-500 text-xs mt-1">{errors.specialty}</p>
-                )}
-              </div>
-
-              {/* Toggle */}
-              <div className="border border-gray-200 rounded-xl px-4 py-3">
-                <Toggle
-                  checked={formData.activateAccess}
-                  onChange={(val) => handleChange("activateAccess", val)}
-                  label="Activer l'accès au portail dès la création"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ═══════════════════════════════════════════════════════════════
-            DESKTOP: Spécialité card (full width, below the 2-col grid)
-        ═══════════════════════════════════════════════════════════════ */}
-        <div className="hidden lg:block mt-6 bg-white rounded-2xl shadow-sm border border-gray-100 p-6 sm:p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-11 h-11 bg-[#e8edf6] rounded-xl flex items-center justify-center text-[#1e3a6e]">
-              <BriefcaseIcon className="w-6 h-6" />
-            </div>
-            <h3 className="text-lg font-bold text-[#1e293b]">Spécialité</h3>
-          </div>
-
-          <div className="relative max-w-xl">
-            <select
-              value={formData.specialty}
-              onChange={(e) => handleChange("specialty", e.target.value)}
-              className={`${inputClassName(
-                !!errors.specialty
-              )} appearance-none pr-10 ${
-                !formData.specialty ? "text-gray-400" : "text-[#1e293b]"
-              }`}
+            {/* ═══════════════════════════════════════════════════════════════
+                ACTION BUTTONS
+            ═══════════════════════════════════════════════════════════════ */}
+            <div className="mt-8 sm:mt-10 border-t border-gray-200 pt-6 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3">
+            <button
+                type="button"
+                onClick={handleCancel}
+                className="px-6 py-3 text-sm font-semibold text-gray-600 hover:text-[#1e3a6e] transition rounded-xl hover:bg-gray-100"
             >
-              <option value="" disabled>
-                Sélectionnez une spécialité
-              </option>
-              {SPECIALTIES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-            <ChevronDownIcon className="w-5 h-5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
-          {errors.specialty && (
-            <p className="text-red-500 text-xs mt-1">{errors.specialty}</p>
-          )}
-
-          {/* Divider */}
-          <div className="border-t border-gray-100 my-6" />
-
-          {/* Toggle */}
-          <Toggle
-            checked={formData.activateAccess}
-            onChange={(val) => handleChange("activateAccess", val)}
-            label="Activer l'accès au portail dès la création"
-          />
-        </div>
-
-        {/* ═══════════════════════════════════════════════════════════════
-            ACTION BUTTONS
-        ═══════════════════════════════════════════════════════════════ */}
-        <div className="mt-8 sm:mt-10 border-t border-gray-200 pt-6 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={handleCancel}
-            className="px-6 py-3 text-sm font-semibold text-gray-600 hover:text-[#1e3a6e] transition rounded-xl hover:bg-gray-100"
-          >
-            Annuler
-          </button>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="flex items-center justify-center gap-2 bg-[#1e3a6e] text-white px-8 py-3 rounded-xl font-semibold text-sm hover:bg-[#2a4f8f] transition shadow-lg shadow-[#1e3a6e]/20 disabled:opacity-60 disabled:cursor-not-allowed"
-          >
-            <SaveIcon className="w-5 h-5" />
-            {isSubmitting ? "Enregistrement..." : "Enregistrer le profil"}
-          </button>
-        </div>
-      </form>
+                Annuler
+            </button>
+            <button
+                type="submit"
+                disabled={isSubmitting}
+                className="flex items-center justify-center gap-2 bg-[#1e3a6e] text-white px-8 py-3 rounded-xl font-semibold text-sm hover:bg-[#2a4f8f] transition shadow-lg shadow-[#1e3a6e]/20 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
+                <SaveIcon className="w-5 h-5" />
+                {isSubmitting ? "Enregistrement..." : "Enregistrer le profil"}
+            </button>
+            </div>
+        </form>
     </div>
   );
 }

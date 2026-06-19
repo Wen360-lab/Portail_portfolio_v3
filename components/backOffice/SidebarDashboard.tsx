@@ -1,4 +1,5 @@
 "use client"
+
 import Link from "next/link"
 import { useState } from "react"
 import { GrMenu } from "react-icons/gr";
@@ -13,7 +14,7 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
     const [sidbarOpen, setSidebarOpen] = useState(false)
 
     return (
-        <div className="main-container lg:flex min-h-screen">
+        <div className="main-container lg:flex h-screen">
 
             {/* La Sidebar */}
             <aside className={`w-64 bg-primary text-white py-3 md:py-6 px-2 md:px-5 fixed top-0 left-0 bottom-0 
@@ -89,10 +90,10 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
             </aside>
 
             {/* Le Contenu principal */}
-            <div className="flex flex-col flex-1 justify-between">
+            <div className="flex flex-col flex-1 justify-between bg-gray-100">
 
                 {/* Le Header */}
-                <header className="bg-white shadow-sm px-6 py-2 sticky top-0 right-0 left-0 z-40">
+                <header className="bg-white shadow-sm px-2 md:px-6 py-2 sticky top-0 right-0 left-0 z-40">
 
                     <div className="flex justify-between items-center gap-5">
 
@@ -128,7 +129,7 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                 </header>
 
                 {/*La Page principale elle-même (tableau de profils) */}
-                <main className="px-2 md:px-4 lg:px-6">
+                <main className="h-auto overflow-y-auto px-2 md:px-6 pt-20">
                     {children}
                 </main>
             </div>
