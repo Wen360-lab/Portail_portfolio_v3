@@ -1,10 +1,11 @@
 "use client"
-
+import Link from "next/link"
 import { useState } from "react"
 import { GrMenu } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdHome } from "react-icons/io";
 import { IoMdLogOut } from "react-icons/io";
+import { BsPencilFill } from "react-icons/bs";
 
 export default function SidebarDashboard({children} : {children: React.ReactNode})
 {
@@ -33,12 +34,12 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                         </div>
 
                         {/* Le Bouton Accueil */}
-                        <button className="flex justify-center items-center text-center font-semibold gap-5 
+                        <Link href="/dashboard" className="flex justify-center items-center text-center font-semibold gap-5 
                             bg-white text-primary px-4 py-2 rounded-lg 
-                            w-full cursor-pointer shadow">
+                            w-full cursor-pointer text-sm">
 
-                                Accueil <IoMdHome className="text-primary font-bold text-xl" />
-                        </button>
+                                Accueil <IoMdHome className="text-primary font-bold text-md" />
+                        </Link>
                     </div>
 
                     {/* Milieu : Carte Administrateur */}
@@ -60,17 +61,28 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                                 <p className="text-primary font-bold text-sm">Adresse email</p>
                                 <p className="text-gray-600 text-sm ">AdminP@gmail.com</p>
                             </div>
+                            <div className="">
+                                <Link 
+                                    href="/update" 
+                                    className="flex justify-center items-center text-center 
+                                        font-semibold bg-white text-primary px-4 py-2 gap-5
+                                        rounded-lg w-full cursor-pointer shadow border-2 text-sm">
+
+                                    modifier 
+                                    <BsPencilFill />
+                                </Link>
+                            </div>
                         </div>
                     </div>
 
                     {/* Bas : Bouton de Déconnexion */}
-                    <button className="flex justify-center items-center text-center 
-                        font-semibold bg-white text-primary px-4 py-2 gap-5
-                        rounded-lg w-full cursor-pointer shadow" >
+                    <Link href="/login" className="flex justify-center items-center text-center 
+                        font-semibold bg-white text-primary px-4 py-3 gap-5
+                        rounded-lg w-full cursor-pointer text-sm" >
 
-                        Déconnexion <IoMdLogOut className="text-primary font-bold text-xl"/> 
+                        Déconnexion <IoMdLogOut className="text-primary font-bold"/> 
 
-                    </button>
+                    </Link>
                 </div>
             </aside>
 

@@ -1,5 +1,6 @@
 
 import type { ReactNode } from "react";
+import Link from "next/link";
 import {
   ArrowLeft,
   Mail,
@@ -53,14 +54,14 @@ export default function ShowProfilePage() {
         </div>
 
         <div className="flex flex-col gap-4 sm:flex-row lg:pt-12">
-          <button className="flex h-[43px] items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 shadow-sm">
+          <Link href="/dashboard" className="flex h-[43px] items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-6 text-sm font-semibold text-slate-700 shadow-sm">
             <ArrowLeft className="h-4 w-4" />
             Retour à la liste
-          </button>
-          <button className="flex h-[43px] items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-white shadow-sm">
+          </Link>
+          <Link href="/dashboard/update" className="flex h-[43px] items-center justify-center gap-2 rounded-lg bg-primary px-6 text-sm font-semibold text-white shadow-sm">
             <Pencil className="h-4 w-4" />
             Modifier le profil
-          </button>
+          </Link>
         </div>
       </div>
 
