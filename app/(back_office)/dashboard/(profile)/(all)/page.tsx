@@ -79,15 +79,19 @@ function ProfileTr({profil}: {profil: TypeProfile})
 
 
     return (
-        <tr key={profil.id} className="shadow  hover:bg-gray-200 duration-100">
+        <tr key={profil.id} className="shadow  hover:bg-gray-100 duration-100">
             <td className="p-2">
                 <div className="w-8 h-8 rounded-full flex justify-center items-center text-white bg-primary font-sora">{profil.id}</div>
             </td>
-            <td className="p-2 text-sm max-w-xs truncate text-gray-800">{profil.nom}</td>
+            <td className="p-2 text-sm max-w-xs truncate text-gray-800 hover:underline hover:text-primary">
+                <Link href="/dashboard/show" >
+                    {profil.nom}
+                </Link>
+            </td>
             <td className="p-2 text-sm max-w-xs truncate text-gray-800">{profil.prenom}</td>
             <td className="p-2 text-sm max-w-xs truncate text-gray-800">{profil.specialite}</td>
             <td className="p-2 text-sm max-w-xs truncate text-gray-800">{profil.description}</td>
-            <td className="p-2 text-sm max-w-xs truncate text-gray-800 hover:underline">
+            <td className="p-2 text-sm max-w-xs truncate text-gray-800 hover:underline hover:text-primary">
                 <Link href={profil.lienPortfolio}>{profil.lienPortfolio}</Link>
             </td>
             <td className="p-4 relative">
@@ -95,9 +99,9 @@ function ProfileTr({profil}: {profil: TypeProfile})
 
                 {menuOuvert === profil.id && (
                 <div className="absolute right-0  w-[240] shadow-lg z-10 flex flex-col gap-2 p-10 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg">
-                    <button className="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity duration-300 cursor-pointer">
+                    <Link href="/dashboard/update" className="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity duration-300 cursor-pointer">
                     Modifier profil
-                    </button>
+                    </Link>
                     <button className="bg-primary text-white px-4 py-2 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity duration-300 cursor-pointer">
                     Supprimer profil
                     </button>
@@ -123,7 +127,7 @@ export default function Dashboard() {
                         <div className="bg-primary text-white px-4 py-2 rounded-lg ">12</div>
                     </div>
 
-                    <button className="bg-primary text-white px-4 py-2 rounded-lg cursor-pointer">Ajouter un profil +</button>
+                    <Link href="/dashboard/create" className="bg-primary text-white px-4 py-2 rounded-lg cursor-pointer">Ajouter un profil +</Link>
                 </div>
             </div>
 

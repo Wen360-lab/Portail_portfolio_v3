@@ -1,6 +1,6 @@
 import { MdOutlineMailOutline } from "react-icons/md";
 import { GiPadlock } from "react-icons/gi";
-
+import Link from "next/link";
 export default function LoginPage()
 {
 
@@ -44,9 +44,13 @@ export default function LoginPage()
             </div>
 
             {/* Bouton connexion */}
-            <button className="w-full font-poppins bg-primary text-white py-3 rounded-lg hover:opacity-90 transition-opacity duration-300 cursor-pointer">
+            <Link href="/dashboard" className="block w-full 
+                font-poppins bg-primary text-white py-3 px-4
+                rounded-lg hover:opacity-90 transition-opacity 
+                text-center
+                duration-300 cursor-pointer">
                 Connexion
-            </button>
+            </Link>
 
         </div>
       </div>
