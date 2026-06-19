@@ -1,12 +1,71 @@
 import type { Metadata } from "next";
 
+import Header from "../_components/Header";
+import Footer from "../_components/Footer";
+import { developers } from "./_data";
+
+import "@/style/frontOfficeStyle/pages/profile/_hero.scss";
+import "@/style/frontOfficeStyle/pages/profile/_grid_card.scss";
+
 export const metadata: Metadata = {
   title: "Portail Portfolios | Profiles",
 };
 
-export default function ProfilePage(){
+export default function ProfilePage() {
+    return (
+        <div className="profile-page">
+            <Header />
 
-    return (<>
-        <h2>Page des profiles</h2>
-    </>)
+            <section className="hero">
+                <div className="main-container">
+                    <div className="container">
+                        <div className="flex">
+                            <div className="content">
+                                <h1>Découvrez nos développeurs</h1>
+                                <div className="form">
+                                    <select defaultValue="">
+                                        <option value="">Tous les profiles</option>
+                                        <option value="">Frontend</option>
+                                        <option value="">Backend</option>
+                                        <option value="">FullStack</option>
+                                    </select>
+                                    <div className="search-input">
+                                        <input type="text" />
+                                        <i className="fa-solid fa-magnifying-glass"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="grid_card">
+                <div className="main-container">
+                    <div className="container">
+                        <div className="grid-container">
+                            {developers.map((dev) => (
+                                <div className="card" key={dev.link}>
+                                    <div className="img">
+                                        <img src={dev.photo} alt={dev.name} />
+                                        <div className="overlay"></div>
+                                    </div>
+                                    <div className="body">
+                                        <h2 className="name">{dev.name}</h2>
+                                        <h4 className="title">{dev.role}</h4>
+                                        <p>{dev.desc}</p>
+                                        <a href={dev.link} className="btn" target="_blank" rel="noopener noreferrer">
+                                            voir le profile <i className="fa-solid fa-arrow-right-long"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <Footer />
+        </div>
+    );
 }

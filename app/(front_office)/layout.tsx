@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 
 import "@/style/frontOfficeStyle/base/_reset.scss";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 export const metadata: Metadata = {
   title: "Portail Portfolios",
