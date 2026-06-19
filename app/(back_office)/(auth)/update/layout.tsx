@@ -1,0 +1,21 @@
+import SidebarDashboard from "@/components/backOffice/SidebarDashboard";
+
+import type { Metadata } from "next";
+import "@/style/tailwind.css";
+
+
+
+export const metadata: Metadata = {
+  title: "Portail Portfolios | admin",
+};
+
+export default function RootLayout({ children }: Readonly<{children: React.ReactNode; }>) 
+{
+    return (
+        <html lang="fr" >
+           <body className="bg-gray-100 font-poppins font-medium">
+                <SidebarDashboard children={children} />
+            </body>
+        </html>
+    );
+}

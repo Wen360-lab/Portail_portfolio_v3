@@ -114,7 +114,7 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                 </header>
 
                 {/*La Page principale elle-même (tableau de profils) */}
-                <main className="px-6">
+                <main className="px-2 md:px-4 lg:px-6">
                     {children}
                 </main>
             </div>

@@ -16,16 +16,13 @@
     max-width: 1440px;
     margin: 0 auto;
 }
-
+/* 
 .bg-login-admin-form {
     background-image:
-        linear-gradient(
-            rgba(var(--color-primary), .7),
-            rgba(var(--color-primary), .7)
-        ),
+     
         url("/home/bg-img-home.jpeg");
         
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-}
+} */
