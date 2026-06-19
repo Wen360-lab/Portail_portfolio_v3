@@ -6,7 +6,7 @@ export default function LoginPage()
 
     return (<>
 
-        <div className="min-h-screen flex items-center justify-center">
+        <div className="min-h-screen flex items-center justify-center px-2">
             <div className="bg-white p-8 rounded-xl shadow-lg w-full sm:w-md">
             
             {/* Logo */}

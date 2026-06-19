@@ -118,7 +118,7 @@ function ProfileTr({profil}: {profil: TypeProfile})
 export default function Dashboard() {
 
     return (
-        <section>
+        <section className="border-3">
             <div className="flex justify-between items-center mb-6">
                 <h1 className="text-2xl md:text-3xl  font-bold">Profils</h1>
                 <div className="flex gap-4">

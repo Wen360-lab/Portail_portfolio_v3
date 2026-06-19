@@ -16,7 +16,9 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
         <div className="main-container lg:flex min-h-screen">
 
             {/* La Sidebar */}
-            <aside className={`w-64 bg-primary text-white py-6 px-5 fixed top-0 left-0 bottom-0 lg:static lg:translate-x-0 transition-all duration-500 ${sidbarOpen ? "translate-x-0" : "-translate-x-64"} `}>
+            <aside className={`w-64 bg-primary text-white py-3 md:py-6 px-2 md:px-5 fixed top-0 left-0 bottom-0 
+                    lg:static lg:translate-x-0 transition-all duration-500  z-50
+                    ${sidbarOpen ? "translate-x-0" : "-translate-x-64"} `}>
                 <div className="flex flex-col h-full justify-between">
                 
                     {/* Haut : Logo + Navigation */}
@@ -90,16 +92,16 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
             <div className="flex flex-col flex-1 justify-between">
 
                 {/* Le Header */}
-                <header className="bg-white shadow-sm px-6 py-2">
+                <header className="bg-white shadow-sm px-6 py-2 sticky top-0 right-0 left-0 z-40">
 
-                    <div className="flex justify-between items-center">
+                    <div className="flex justify-between items-center gap-5">
 
                         <GrMenu className="text-3xl cursor-pointer lg:hidden" onClick={()=>setSidebarOpen(!sidbarOpen)} />
 
                         {/* La Barre de recherche */}
                         <div className="flex items-center gap-4 py-3">
                             {/* icone ici */}
-                            <div className="w-100">
+                            <div className=" w-full sm:w-80 md:w-100">
                                 <input 
                                     type="text" 
                                     placeholder="Rechercher" 
@@ -110,12 +112,12 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                         </div>
 
                         {/* Le profil Administrateur */}
-                        <div className="flex gap-2 justify-center items-center">
+                        <div className="md:flex gap-2 justify-center items-center hidden">
                             {/* photo de prodil */}
                             <div className="w-12 h-12 rounded-full flex justify-center items-center text-white bg-primary"></div>
                             
                             <div className="flex-col gap-0.5">
-                                <p className="text-base font-medium">Adimistrateur</p>
+                                <p className="text-sm font-medium">Adimistrateur</p>
                                 <p className="text-sm text-gray-600">Admin@gmail.com</p>
                             </div>
                         </div>
