@@ -1,9 +1,13 @@
 "use client"
+
 import Link from "next/link"
 import { useState } from "react"
-import Btn from "@/src/components/layouts/Btn"
 import { FaPlus } from "react-icons/fa6";
 
+/**
+ * tableaux de tous les portfolios
+ * 
+ * */
 const profils = [
   {
     id: 1,
@@ -58,12 +62,9 @@ const profils = [
 
 ]
 
-function ThHeadTable({label}: {label: string}){
-    return (
-        <th className="p-2 text-sm text-gray-900 py-5">{label}</th>
-    )
-}
-
+/**
+ * Le type qui definie un profile
+ */
 type TypeProfile ={
     profil: {
         id: string,
@@ -75,7 +76,55 @@ type TypeProfile ={
     }
 }
 
-function ProfileTr({profil}: {profil: TypeProfile}){
+/**
+ * genere le HEAD du table
+ * 
+ * @param param0 
+ * @returns 
+ */
+function Thead(){
+
+    function Th ({label}: {label: string})
+    {
+        return (
+            <th className="p-2 text-sm text-gray-900 py-5">{label}</th>
+        )
+    }
+    
+    return (
+        <thead>
+            <tr className="border-b border-gray-300 text-left">
+                <Th label="N" />
+                <Th label="Non" />
+                <Th label="Prénom" />
+                <Th label="Spécialité" />
+                <Th label="Description" />
+                <Th label="portfolio" />
+                <Th label="Action" />
+            </tr>
+        </thead>
+    )
+}
+
+/**
+ * Genere le Body du tableau
+ * @returns 
+ */
+function Tbody({profils}: {profils: TypeProfile[]}){
+
+
+    return (
+        <tbody className="max-h-100 overflow-y-auto">
+            {profils.map(({profil}: TypeProfile) => (
+                <Tr key={profil.id} profil={profil} />
+            ))}
+        </tbody>
+    )
+}
+
+
+
+function Tr({profil}: TypeProfile){
     const [menuOuvert, setMenuOuvert] = useState<number | null>(null)
 
 
@@ -143,23 +192,8 @@ export default function Dashboard() {
             </div>
 
             <table className="w-full bg-white rounded-lg shadow table-fixed mb-4">
-                <thead>
-                    <tr className="border-b border-gray-300 text-left">
-                        <ThHeadTable label="N" />
-                        <ThHeadTable label="Non" />
-                        <ThHeadTable label="Prénom" />
-                        <ThHeadTable label="Spécialité" />
-                        <ThHeadTable label="Description" />
-                        <ThHeadTable label="portfolio" />
-                        <ThHeadTable label="Action" />
-                    </tr>
-                </thead>
-
-                <tbody className="max-h-100 overflow-y-auto">
-                    {profils.map((profil) => (
-                        <ProfileTr key={profil.id} profil={profil} />
-                    ))}
-                </tbody>
+                <Thead />
+                <Tbody profils={profils} />
             </table>
         </section>
     )

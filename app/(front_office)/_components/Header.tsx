@@ -11,7 +11,7 @@ export default function Header() {
                         <nav className="nav">
                             <Link href="/" className="link">Accueil</Link>
                             <Link href="/profile" className="link">Profile</Link>
-                            <Link href="/about" className="link">À propos</Link>
+                            <Link href="#" className="link">À propos</Link>
                         </nav>
                     </div>
                 </div>
