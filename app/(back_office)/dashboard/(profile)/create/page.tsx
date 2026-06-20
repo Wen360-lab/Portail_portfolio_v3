@@ -1,16 +1,14 @@
 "use client";
 
 import { useRef, useState, type ChangeEvent, type FormEvent } from "react";
-import { IoIosArrowForward } from "react-icons/io";
 import { AiOutlineUser } from "react-icons/ai";
 import { HiOutlineBriefcase } from "react-icons/hi2";
 import { FaChevronDown } from "react-icons/fa6";
 import { VscSaveAll } from "react-icons/vsc";
 import { CiCamera } from "react-icons/ci";
 import { FaRegEdit } from "react-icons/fa";
-import Link from "next/link"
 
-
+import Subnav from "@/components/backOffice/Subnav";
 
 
 
@@ -228,9 +226,9 @@ export default function CreateProfilePage() {
   // ─── Render ────────────────────────────────────────────────────────────────
   return (
     <div className="py-6 sm:py-8">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-1 text-sm mb-6"> <Link href="/dashboard" className="font-semibold  text-primary">Dashboard</Link> <IoIosArrowForward /><span className="text-gray-700 ">Nouveau profil</span>
-        </nav>
+
+    <Subnav label="Nouveau profile" />
+              
 
         {/* Title */}
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-700 mb-6 sm:mb-8">

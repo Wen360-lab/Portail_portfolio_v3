@@ -1,6 +1,5 @@
 
-function Input({label, type, placeholder}: {label: string, type?: string, placeholder?: string})
-{
+function Input({label, type, placeholder}: {label: string, type?: string, placeholder?: string}){
 
     return (<div className="flex flex-col gap-2">
         <label className="text-primary font-semibold text-sm">{label}</label>
@@ -11,8 +10,8 @@ function Input({label, type, placeholder}: {label: string, type?: string, placeh
         />
     </div>)
 }
-export default function UpdateAdmin()
-{
+
+export default function UpdateAdmin(){
 
     return (<>
         <form className="bg-white p-2 lg:p-8 my-10 rounded-lg">

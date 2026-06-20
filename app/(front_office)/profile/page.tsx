@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
-import Header from "../_components/Header";
-import Footer from "../_components/Footer";
+import Header from "@/components/frontOffice/Header";
+import Footer from "@/components/frontOffice/Footer";
 import { developers } from "./_data";
 
 import "@/style/frontOfficeStyle/pages/profile/_hero.scss";

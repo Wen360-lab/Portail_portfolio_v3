@@ -115,11 +115,11 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                         {/* Le profil Administrateur */}
                         <div className="md:flex gap-2 justify-center items-center hidden">
                             {/* photo de prodil */}
-                            <div className="w-12 h-12 rounded-full flex justify-center items-center text-white bg-primary"></div>
+                            <div className="w-12 h-12 rounded-full flex justify-center items-center text-white bg-gray-200"></div>
                             
                             <div className="flex-col gap-0.5">
-                                <p className="text-sm font-medium">Adimistrateur</p>
-                                <p className="text-sm text-gray-600">Admin@gmail.com</p>
+                                <p className="text-sm font-semibold text-gray-700">Adimistrateur</p>
+                                <p className="text-sm text-gray-700">Admin@gmail.com</p>
                             </div>
                         </div>
 

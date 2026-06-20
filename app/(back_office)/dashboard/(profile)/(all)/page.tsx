@@ -129,7 +129,7 @@ function Thead(){
     function Th ({label}: {label: string})
     {
         return (
-            <th className="p-2 text-sm text-gray-900 py-5">{label}</th>
+            <th className="p-2 text-sm text-gray-700 py-5">{label}</th>
         )
     }
     
@@ -235,20 +235,21 @@ export default function Dashboard() {
     return (
         <section>
             <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4 mb-6">
-                <h1 className="text-2xl md:text-2xl  font-bold">Profils</h1>
+                <h1 className="text-2xl font-bold text-gray-700">Profils</h1>
 
                 <div className="flex flex-wrap gap-4">
 
                     <div className="flex items-center gap-4">
-                        <h3 className="text-lg font-semibold">Total</h3>
-                        <div className="bg-primary text-white text-sm font-semibold px-4 py-3 rounded-lg ">12</div>
+                        <h3 className="text-lg font-semibold text-gray-700">Total</h3>
+                        <div className="bg-primary text-white text-sm font-semibold px-4 py-2 rounded-lg ">12</div>
                     </div>
 
 
 
                     <Link
                         href="/dashboard/create"
-                        className="bg-primary text-white px-4 py-3 rounded-lg cursor-pointer flex items-center gap-2 text-sm font-semibold"
+                        className="bg-primary text-white px-4 py-2 rounded-lg cursor-pointer 
+                            flex items-center gap-2 text-sm font-semibold"
                         >
                           Ajouter un profile <FaPlus />
                     </Link>
