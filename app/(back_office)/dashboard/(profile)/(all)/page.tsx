@@ -148,7 +148,6 @@ function Thead(){
 function Tr({ profil }: { profil: Profile }) {
     const [menuOuvert, setMenuOuvert] = useState<number | null>(null)
 
-
     return (
         <tr key={profil.id} className="shadow  hover:bg-gray-100 duration-100">
 
@@ -258,10 +257,13 @@ export default function Dashboard() {
             </div>
 
 
-            <table className="w-full bg-white rounded-lg shadow table-fixed mb-4">
-                <Thead />
-                <Tbody profils={profils} />
-            </table>
+            <div className="bg-white rounded-lg shadow  overflow-x-auto mb-8">
+                
+                <table className="table-fixed">
+                    <Thead />
+                    <Tbody profils={profils} />
+                </table>
+            </div>
         </section>
     )
 }
