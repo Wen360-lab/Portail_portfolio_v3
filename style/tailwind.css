@@ -8,8 +8,12 @@
 @theme {
     --color-primary: #1B407D;
     --color-background: #EFF0FE;
+
     --font-holtwood: "Holtwood One SC", serif;
     --font-poppins: "Poppins", sans-serif;
+
+    --breakpoint-xxsm: 28rem;
+    --breakpoint-xsm: 35rem;
 }
 
 
