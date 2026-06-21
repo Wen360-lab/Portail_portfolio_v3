@@ -13,6 +13,11 @@ import {
 
 import Subnav from "@/components/backOffice/Subnav";
 
+import {profiles} from "@/data/data"
+
+import Image from "next/image"
+
+
 
 function InfoBlock({icon, label, children }: Readonly<{ icon: LucideIcon, label: string, children: ReactNode,}>) {
     const Icon = icon;
@@ -31,7 +36,11 @@ function InfoBlock({icon, label, children }: Readonly<{ icon: LucideIcon, label:
     );
 }
 
-export default function ShowProfilePage() {
+export default async function ShowProfilePage({params}: {params: Promise<{id: string}>}) {
+    
+    const {id} = await params
+    const profile_id = Number(id)
+    const profile = profiles.find( profile => profile.id == profile_id)
 
     return (
         <section className="flex flex-col gap-8 pb-4">
@@ -64,18 +73,17 @@ export default function ShowProfilePage() {
                     <div className="flex flex-col">
                         <div className="mb-6">
                             <h3 className="text-xl font-bold leading-tight text-gray-700">
-                                ASSE Ulrich
+                               {profile?.lastname} {profile?.firstname}
                             </h3>
                             <p className="mt-2 text-sm font-normal text-slate-500">
-                                Développeur Web Junior
+                               {profile?.job}
                             </p>
                         </div>
 
-                        <div 
-                            className="flex h-50 w-80 items-center justify-center overflow-hidden 
-                                rounded-xl bg-[radial-gradient(circle_at_50%_20%,#f1f5f9_0,#334155_35%,#111827_100%)] 
-                                text-xs text-white shadow-xl shadow-slate-300/70 mb-4">
+                        <div className="mb-3">
+                            <Image src={`${profile?.photo}`} width={300} height={50} className="rounded-xl object-cover" alt="" />
                         </div>
+
 
                         <div className="flex items-center gap-2 rounded-full w-fit
                              bg-emerald-50 px-5 py-2 text-xs font-bold text-emerald-700 
@@ -123,10 +131,7 @@ export default function ShowProfilePage() {
                 </div>
 
                 <p className="mt-7 text-sm font-normal leading-7 text-slate-600">
-                    Développeur web junior à l’école 241, passionné de la création de
-                    design UI/UX. Expert en gestion de projets complexes de transformation
-                    digitale et optimisation des processus métier pour les grandes
-                    entreprises. Spécialisé dans les méthodologies Agiles.
+                    {profile?.desc}
                 </p>
 
             </section>

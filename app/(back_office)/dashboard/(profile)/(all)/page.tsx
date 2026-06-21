@@ -3,116 +3,8 @@
 import Link from "next/link"
 import { useState } from "react"
 import { FaPlus } from "react-icons/fa6";
+import {profiles, ProfileType, ArrayProfilesType} from "@/data/data"
 
-/**
- * tableaux de tous les portfolios
- * 
- * */
-const profils = [
-    {
-        id: 1,
-        nom: "Mombo Mombo",
-        prenom: "Jean Pierre",
-        specialite: "Front-end",
-        description: "Designer et product...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 2,
-        nom: "Obame",
-        prenom: "Marie",
-        specialite: "Back-end",
-        description: "Développeur Node...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 3,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte logiciel, je créer des app robustres",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 4,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 5,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 6,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 7,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 8,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 9,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    },
-
-    {
-        id: 10,
-        nom: "Nzeng",
-        prenom: "Paul",
-        specialite: "Full-stack",
-        description: "Dev et architecte...",
-        lienPortfolio: "https://www.githubPage.io",
-    }
-]
-
-/**
- * Le type qui definie un profile
- */
-type Profile = {
-    id: number;
-    nom: string;
-    prenom: string;
-    specialite: string;
-    description: string;
-    lienPortfolio: string;
-}
-
-type TypeProfile = Profile[];
 
 /**
  * genere le HEAD du table
@@ -123,7 +15,7 @@ type TypeProfile = Profile[];
 function Thead(){
 
     const labels = [
-        'N#', 'Nom', 'Prenom', 'Spécialité', 'Description', 'Portfolio', 'Action'
+        '#', 'Nom', 'Spécialité', 'Description', 'Portfolio', 'Action'
     ]
 
     function Th ({label}: {label: string})
@@ -145,51 +37,47 @@ function Thead(){
 /**
  * genere une ligne du tableau. Donc un profile
  */
-function Tr({ profil }: { profil: Profile }) {
+function Tr({ profile }: { profile: ProfileType }) {
     const [menuOuvert, setMenuOuvert] = useState<number | null>(null)
 
     return (
-        <tr key={profil.id} className="shadow  hover:bg-gray-100 duration-100">
+        <tr key={profile.id} className="shadow  hover:bg-gray-100 duration-100">
 
             <td className="p-2">
                 <div className="w-8 h-8 rounded-full flex justify-center 
                     items-center text-white bg-primary font-sora">
-                    {profil.id}
+                    {profile.id}
                 </div>
             </td>
 
             <td className="p-2 text-sm max-w-xs truncate text-gray-800 
                 hover:underline hover:text-primary">
 
-                <Link href="/dashboard/show" >
-                    {profil.nom}
+                <Link href={`/dashboard/${profile.id}`} >
+                    {profile.lastname}
                 </Link>
 
             </td>
 
             <td className="p-2 text-sm max-w-xs truncate text-gray-800">
-                {profil.prenom}
+                {profile.job}
             </td>
 
             <td className="p-2 text-sm max-w-xs truncate text-gray-800">
-                {profil.specialite}
-            </td>
-
-            <td className="p-2 text-sm max-w-xs truncate text-gray-800">
-                {profil.description}
+                {profile.desc}
             </td>
 
             <td className="p-2 text-sm max-w-xs truncate text-gray-800 
                 hover:underline hover:text-primary">
 
-                <Link href={profil.lienPortfolio}>{profil.lienPortfolio}</Link>
+                <Link href={profile.portfolio}>{profile.portfolio}</Link>
 
             </td>
 
             <td className="p-4 relative">
-                <button className="font-sora cursor-pointer w-full" onClick={() => setMenuOuvert(menuOuvert === profil.id ? null : profil.id)}>...</button>
+                <button className="font-sora cursor-pointer w-full" onClick={() => setMenuOuvert(menuOuvert === profile.id ? null : profile.id)}>...</button>
 
-                {menuOuvert === profil.id && (
+                {menuOuvert === profile.id && (
                 <div className="absolute right-0  w-[240] shadow-lg z-10 flex flex-col gap-2 p-10 bg-white/20 backdrop-blur-md border border-white/30 rounded-lg">
                     
                     <Link href="/dashboard/update" className="bg-primary text-white px-4 py-2 rounded-lg 
@@ -216,12 +104,12 @@ function Tr({ profil }: { profil: Profile }) {
  * Genere le Body du tableau
  * @returns 
  */
-function Tbody({ profils }: { profils: TypeProfile }) {
+function Tbody({ profiles }: { profiles: ArrayProfilesType }) {
 
     return (
         <tbody className="">
-            {profils.map((profil) => (
-                <Tr key={profil.id} profil={profil} />
+            {profiles.map((profile) => (
+                <Tr key={profile.id} profile={profile} />
             ))}
         </tbody>
     )
@@ -261,7 +149,7 @@ export default function Dashboard() {
                 
                 <table className="table-fixed">
                     <Thead />
-                    <Tbody profils={profils} />
+                    <Tbody profiles={profiles} />
                 </table>
             </div>
         </section>
