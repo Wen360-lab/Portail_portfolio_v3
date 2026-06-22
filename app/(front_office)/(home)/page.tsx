@@ -1,23 +1,19 @@
-import Link from "next/link";
-import { FaArrowRightLong } from "react-icons/fa6";
+"use client"
 import "@/style/frontOfficeStyle/pages/home/_hero.scss";
+import Cta from "@/components/frontOffice/homeComponents/Cta"
+import Bouton from "@/components/frontOffice/homeComponents/Bouton"
+
 
 export default function HomePage(){
 
     return (
 
         <section className="hero-section">
-            <div className="main-container">
-                <div className="container">
-                    <div className="content">
-                        <div className="flex">
-                            <h1 className="hero-title">Bienvenue sur le portail des<br/>portfolios des développeurs<br/>de l'École 241</h1>
-                            <p className="hero-subtitle">Cette plateforme regroupe l'ensemble des développeurs de la<br/>promotion 14 de l'École 241. Chaque profil possède des<br/>aptitudes et compétences diverses.</p>
-                            <Link href="/profile" className="btn-explore">Explorez les portfolios <FaArrowRightLong /></Link>
-                        </div>
-                    </div>               
-                </div>          
-            </div>
+            {/* La section "Call To Action" CTA de la page d'accueil */}
+            <Cta/>
+            {/* Le bouton permettant l'accès aux profils */}
+            <Bouton/>
+           
         
             <div className="stats">
                 <div className="main-container">

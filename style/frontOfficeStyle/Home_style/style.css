@@ -1,0 +1,44 @@
+/* Le style des composants de la page d'accueil */
+
+/* Le CTA */
+.hero-title{
+    font-size: 2.8rem;
+    line-height: 1.2;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.hero-subtitle{
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* Le bouton */
+.btn-explore{
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    gap: .8rem;
+    padding: .8rem 1rem;
+    font-size: .99rem;
+
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 50px;
+
+    color: white;
+    border: .1rem solid white;
+    backdrop-filter: blur(20px);
+ }
