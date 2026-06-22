@@ -2,6 +2,9 @@
 
 import Link from "next/link"
 import { useState } from "react"
+import {useAuth} from "@/lib/hooks/useAuth"
+import { useRouter } from "next/navigation";
+
 import { GrMenu } from "react-icons/gr";
 import { IoCloseSharp } from "react-icons/io5";
 import { IoMdHome } from "react-icons/io";
@@ -11,7 +14,15 @@ import { BsPencilFill } from "react-icons/bs";
 export default function SidebarDashboard({children} : {children: React.ReactNode})
 {
 
+    const router = useRouter();
+    const logout = ()=>{
+        localStorage.removeItem("user")
+        router.push('/login')
+    }
+
     const [sidbarOpen, setSidebarOpen] = useState(false)
+    const user = useAuth();
+    if(!user) return <p> Chargement ...</p>
 
     return (
         <div className="main-container lg:flex h-screen">
@@ -37,7 +48,7 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                         </div>
 
                         {/* Le Bouton Accueil */}
-                        <Link href="/dashboard" className="flex justify-center items-center text-center font-semibold gap-5 
+                        <Link href="/dashboard/profiles" className="flex justify-center items-center text-center font-semibold gap-5 
                             bg-white text-primary px-4 py-2 rounded-lg 
                             w-full cursor-pointer text-sm">
 
@@ -52,18 +63,18 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
 
                         {/* Infos */}
                         <div className="p-4 flex flex-col gap-4">
-                            <div>
+                           { user.lastname && <div>
                                 <p className="text-primary font-bold text-sm">Nom</p>
-                                <p className="text-gray-600 text-sm">Administrateur P.</p>
-                            </div>
-                            <div>
-                                <p className="text-primary font-bold text-sm">Prénom</p>
-                                <p className="text-gray-600 text-sm ">Administrateur P.</p>
-                            </div>
-                            <div>
+                                <p className="text-gray-600 text-sm">{user.lastname}</p>
+                            </div>}
+                           { user.firstname && <div>
+                                <p className="text-primary font-bold text-sm">Prénoms</p>
+                                <p className="text-gray-600 text-sm ">{user.firstname}</p>
+                            </div>}
+                          {  user.email && <div>
                                 <p className="text-primary font-bold text-sm">Adresse email</p>
-                                <p className="text-gray-600 text-sm ">AdminP@gmail.com</p>
-                            </div>
+                                <p className="text-gray-600 text-sm ">{user.email}</p>
+                            </div>}
                             <div className="">
                                 <Link 
                                     href="/update" 
@@ -79,13 +90,13 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                     </div>
 
                     {/* Bas : Bouton de Déconnexion */}
-                    <Link href="/login" className="flex justify-center items-center text-center 
+                    <button onClick={logout} className="flex justify-center items-center text-center 
                         font-semibold bg-white text-primary px-4 py-3 gap-5
                         rounded-lg w-full cursor-pointer text-sm" >
 
                         Déconnexion <IoMdLogOut className="text-primary font-bold"/> 
 
-                    </Link>
+                    </button>
                 </div>
             </aside>
 
@@ -99,18 +110,7 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
 
                         <GrMenu className="text-3xl cursor-pointer lg:hidden" onClick={()=>setSidebarOpen(!sidbarOpen)} />
 
-                        {/* La Barre de recherche */}
-                        <div className="flex items-center gap-4 py-3">
-                            {/* icone ici */}
-                            <div className=" w-full sm:w-80 md:w-100">
-                                <input 
-                                    type="text" 
-                                    placeholder="Rechercher" 
-                                    className="rounded-full px-4 py-3 outline-none text-sm border border-gray-400 w-full"
-                                />
-                            </div>
-                            
-                        </div>
+                        
 
                         {/* Le profil Administrateur */}
                         <div className="md:flex gap-2 justify-center items-center hidden">
@@ -118,8 +118,8 @@ export default function SidebarDashboard({children} : {children: React.ReactNode
                             <div className="w-12 h-12 rounded-full flex justify-center items-center text-white bg-gray-200"></div>
                             
                             <div className="flex-col gap-0.5">
-                                <p className="text-sm font-semibold text-gray-700">Adimistrateur</p>
-                                <p className="text-sm text-gray-700">Admin@gmail.com</p>
+                                <p className="text-sm font-semibold text-gray-700">{user?.lastname}</p>
+                                <p className="text-sm text-gray-700">{user?.email}</p>
                             </div>
                         </div>
 

@@ -13,7 +13,7 @@ import {
 
 import Subnav from "@/components/backOffice/Subnav";
 
-import {profiles} from "@/data/data"
+import {profiles} from "@/lib/mock/data"
 
 import Image from "next/image"
 
@@ -54,7 +54,7 @@ export default async function ShowProfilePage({params}: {params: Promise<{id: st
                     </h1>
 
                     <Link 
-                        href="/dashboard/update" 
+                        href={`/dashboard/profiles/edit/${profile?.id}`} 
                         className="flex items-center justify-center gap-2 
                             rounded-lg bg-primary px-5 py-2.5 text-sm 
                             font-semibold text-white shadow-sm">

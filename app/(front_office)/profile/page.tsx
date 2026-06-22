@@ -6,7 +6,7 @@ import Footer from "@/components/frontOffice/Footer";
 import "@/style/frontOfficeStyle/pages/profile/_hero.scss";
 import "@/style/frontOfficeStyle/pages/profile/_grid_card.scss";
 
-import {profiles} from "@/data/data"
+import {profiles} from "@/lib/mock/data"
 
 export const metadata: Metadata = {
   title: "Portail Portfolios | Profiles",

@@ -7,7 +7,7 @@ export default function Subnav({label}: {label: string}){
     return(
         <nav className="flex items-center gap-1 text-sm mb-6"> 
             <Link 
-                href="/dashboard" 
+                href="/dashboard/profiles" 
                 className="font-semibold  text-primary">
                     Dashboard
             </Link> 
